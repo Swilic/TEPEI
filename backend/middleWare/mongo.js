@@ -1,12 +1,10 @@
-const mongoose = require("mongoose");
+const fastifyPlugin = require('fastify-plugin');
 
-mongoose.connect("mongodb://localhost:27017/quizz");
+const dbconnector = async function(fastify, option){
+    
+    fastify.register(require('@fastify/mongodb'), {
+        url: 'mongodb://localhost:27017/quizz'
+    })
+}
 
-const quizz = mongoose.model(
-  "quizzs",
-  new mongoose.Schema({
-    question: "string",
-    response: "string",
-    theme: "string",
-  })
-);
+module.exports = fastifyPlugin(dbconnector);
