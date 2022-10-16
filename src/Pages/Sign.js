@@ -1,23 +1,33 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useRef } from 'react';
 
 const Sign = () => {
-	function geti() {
-		const user = document.getElementById('mail').value;
-		const pass = document.getElementById('password').value;
+	const userRef = useRef(null);
+	const passRef = useRef(null);
+
+	const handleChange = () => {
+		const user = userRef.current.value;
+		const pass = passRef.current.value;
 		axios
-			.get(`http://localhost:2999/sign/${user}/${pass}`)
+			(`http://localhost:2999/sign`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: {
+					user: user,
+					pass: pass,
+				},
+			})
 			.then((res) => {
 				console.log(res);
 			});
-	}
+	};
 	return (
 		<div className='connexion'>
 			<label htmlFor='mail'>Adresse mail</label>
-			<input type='text' id='mail' />
+			<input type='text' ref={userRef} id='mail' />
 			<label htmlFor='password'>Password</label>
-			<input type='password' id='password' />
-			<button onClick={geti} type='submit'>
+			<input type='password' ref={passRef} id='password' />
+			<button onClick={handleChange} type='submit'>
 				Connexion
 			</button>
 		</div>

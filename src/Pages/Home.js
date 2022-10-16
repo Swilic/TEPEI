@@ -1,5 +1,5 @@
-import React from "react";
-import Account from "../Components/Account.js";
+import React from 'react';
+import Account from '../Components/Account.js';
 
 const Home = () => {
 	return (
