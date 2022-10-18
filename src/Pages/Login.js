@@ -1,17 +1,19 @@
 import axios from 'axios';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
-const Sign = () => {
+const Login = () => {
+	const [isUser, setisUser] = useState(false);
 	const userRef = useRef(null);
 	const passRef = useRef(null);
 
 	const handleChange = () => {
 		const user = userRef.current.value;
 		const pass = passRef.current.value;
-
-		axios(`http://localhost:2999/sign`, {
+		axios(`http://localhost:2999/login`, {
 			method: 'post',
-			headers: { 'Content-Type': 'application/json' },
+			headers: {
+				'Content-Type': 'application/json',
+			},
 			data: {
 				user: user,
 				pass: pass,
@@ -21,7 +23,7 @@ const Sign = () => {
 		});
 	};
 	return (
-		<div className='inscription'>
+		<div className='connexion'>
 			<label htmlFor='mail'>Adresse mail</label>
 			<input type='text' ref={userRef} id='mail' />
 			<label htmlFor='password'>Password</label>
@@ -33,4 +35,4 @@ const Sign = () => {
 	);
 };
 
-export default Sign;
+export default Login;

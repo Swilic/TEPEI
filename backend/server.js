@@ -1,13 +1,12 @@
 const fastify = require('fastify')({ logger: true });
-const multipart = require('@fastify/multipart');
 const cors = require('@fastify/cors');
 const dbconnector = require('./middleWare/mongo.js');
 const routes = require('./routes/account.js');
 
 fastify.register(cors, {
-	origin: false,
+	origin: '*',
+	methods: ['GET', 'POST'],
 });
-fastify.register(multipart);
 
 fastify.register(dbconnector);
 fastify.register(routes);

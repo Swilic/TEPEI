@@ -1,0 +1,13 @@
+@import "./settings";
+@import "./utilities/mixins";
+
+.connexion{
+    @include flex; 
+    background-color: rgb(186, 219, 173);
+}
+
+.inscription{
+    @include flex; 
+    background-color: rgb(173, 193, 219);
+
+}

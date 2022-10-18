@@ -6,10 +6,10 @@ const Account = () => {
 		<div>
 			<ul>
 				<li>
-					<Link to='/sign'>Connexion</Link>
+					<Link to='/login'>Connexion</Link>
 				</li>
 				<li>
-					<Link to='sign'>S'inscire</Link>
+					<Link to='/sign'>S'inscire</Link>
 				</li>
 			</ul>
 		</div>
