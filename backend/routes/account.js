@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const routes = async function (fastify, option) {
 	// const quizzs = fastify.mongo.db.collection('quizzs');
@@ -9,18 +10,22 @@ const routes = async function (fastify, option) {
 			body: { user, pass },
 		} = request;
 
-		const person = await users.findOne({
-			name: user,
-			mdp: pass,
-		});
-		if (person == null) {
-			reply.status(200);
-			return reply.send('Mot de passe ou utilisateur incorrect');
-		}
+		const person = await users.findOne({ name: user });
+		if (person === null) return reply.send('Mot de passe ou utilisateur incorrect');
 
-		// Envoyer le token. Mais où encore  ?
-		console.log(person);
-		reply.send({ hello: 'Hi!' });
+		const { mdp } = person;
+		bcrypt.compare(pass, mdp, (err, result) => {
+			if (err) return console.log(err);
+			if(!result) return reply.send('Mot de passe ou utilisateur incorrect');
+		})
+		const token = jwt.sign({ user: user },
+			"Vgfbsè§('98è§à!ç§è(JHGFC6U8VTcf§'(c))),tuµù$$µybbfoUR(98VGvesdfv76fyg!§vreè",
+			{ expiresIn : '24h'})
+
+		reply.send({ 
+			hello: 'Hi!',
+			token : token
+		});
 	});
 
 	await fastify.post('/sign', async (request, reply) => {
@@ -31,25 +36,17 @@ const routes = async function (fastify, option) {
 
 		if (alreadyIn === null) {
 			bcrypt.hash(pass, 10, (err, hash) => {
-				if (err) {
-					console.err(err);
-				}
+				if (err) return console.err(err);
+
 				users.insertOne({
 					name: user,
 					mdp: hash,
 				});
-				console.log('hahahey');
 			});
-			return reply.send('true');
+			return reply.send('Clear');
 		}
-		console.log('oh no oh no oh no');
-
-		return reply.send('no no no ');
+		return reply.send('Problem');
 	});
-	// user.insertOne({
-	// 	name: user,
-	// 	mdp: pass
-	// })
 };
 
 module.exports = routes;

@@ -9,7 +9,7 @@ fastify.register(cors, {
 });
 
 fastify.register(dbconnector);
-fastify.register(routes);
+fastify.register(routes, {prefix : '/account'});
 
 // Run the server!
 fastify.listen({ port: 2999 }, (err) => {

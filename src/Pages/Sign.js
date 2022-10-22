@@ -9,7 +9,7 @@ const Sign = () => {
 		const user = userRef.current.value;
 		const pass = passRef.current.value;
 
-		axios(`http://localhost:2999/sign`, {
+		axios(`http://localhost:2999/account/sign`, {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			data: {
@@ -22,7 +22,7 @@ const Sign = () => {
 	};
 	return (
 		<div className='inscription'>
-			<label htmlFor='mail'>Adresse mail</label>
+			<label htmlFor='mail'>Nom d'utilisateur</label>
 			<input type='text' ref={userRef} id='mail' />
 			<label htmlFor='password'>Password</label>
 			<input type='password' ref={passRef} id='password' />
