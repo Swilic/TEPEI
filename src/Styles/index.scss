@@ -1,9 +1,16 @@
-@import "./settings";
 @import "./utilities/mixins";
+@import "./settings";
 
+.containerConnexion{
+    @include flex;
+}
 .connexion{
     @include flex; 
     background-color: rgb(186, 219, 173);
+    width : 35%;
+}
+.refused{
+    background-color: red;
 }
 
 .inscription{

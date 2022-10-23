@@ -27,7 +27,7 @@ const Login = () => {
 				localStorage.setItem('user', res.data.user);
 				nav('/');
 			} else {
-				event.target.className = 'connexionRefused';
+				event.target.classList.add('refused');
 			}
 		});
 	};
