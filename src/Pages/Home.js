@@ -2,10 +2,11 @@ import React from 'react';
 import Account from '../Components/Account.js';
 
 const Home = () => {
+	const user = localStorage.getItem('user');
 	return (
 		<div>
 			<Account />
-			<p>Only Hello!</p>
+			<p>Hello {user ? user : 'World'}!</p>
 		</div>
 	);
 };
