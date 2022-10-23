@@ -13,18 +13,14 @@ const routes = async function (fastify, option) {
 		const person = await users.findOne({ name: user });
 		if (person === null) return reply.send('Mot de passe ou utilisateur incorrect');
 
-		const { mdp } = person;
-		bcrypt.compare(pass, mdp, (err, result) => {
-			if (err) return console.log(err);
-			if(!result) return reply.send('Mot de passe ou utilisateur incorrect');
-		})
-		const token = jwt.sign({ user: user },
-			"Vgfbsè§('98è§à!ç§è(JHGFC6U8VTcf§'(c))),tuµù$$µybbfoUR(98VGvesdfv76fyg!§vreè",
-			{ expiresIn : '24h'})
+		const match = await bcrypt.compare(pass, person.mdp)
+		if(!match) return reply.send('Mot de passe ou utilisateur incorrect');
 
 		reply.send({ 
 			hello: 'Hi!',
-			token : token
+			token : jwt.sign({ user: user },
+					"Vgfbsè§('98è§à!ç§è(JHGFC6U8VTcf§'(c))),tuµù$$µybbfoUR(98VGvesdfv76fyg!§vreè",
+					{ expiresIn : '24h'})
 		});
 	});
 
