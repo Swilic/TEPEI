@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Account = () => {
+
 	return (
 		<div>
 			<ul>
@@ -10,7 +11,7 @@ const Account = () => {
 				</li>
 				<li>
 					<Link to='/sign'>S'inscire</Link>
-				</li>
+				</li>	
 			</ul>
 		</div>
 	);

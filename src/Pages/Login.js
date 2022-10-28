@@ -21,10 +21,10 @@ const Login = () => {
 				pass: pass,
 			},
 		}).then((res) => {
-			console.log(event);
 			if (res.data.status === 'Clear') {
 				localStorage.setItem('token', res.data.token);
 				localStorage.setItem('user', res.data.user);
+				localStorage.setItem('connected', true);
 				nav('/');
 			} else {
 				event.target.classList.add('refused');

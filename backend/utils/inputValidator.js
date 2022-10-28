@@ -6,10 +6,9 @@ const verifyValue = function (value) {
 	}
 
 	const arrayValue = value.split('');
-	let isGood = true;
 	arrayValue.forEach((char) => {
 		if (invalidChar.includes(char)) {
-			isGood = false;
+			return false
 		}
 	});
 	if (!isGood) {
@@ -17,7 +16,6 @@ const verifyValue = function (value) {
 		return false;
 	}
 
-	console.log('Looks good!');
 	return true;
 };
 module.exports = verifyValue;
