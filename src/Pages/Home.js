@@ -1,5 +1,6 @@
 import React from 'react';
 import Account from '../Components/Account.js';
+import Navigation from '../Components/Navigation.js';
 import Profil from '../Components/Profil.js';
 
 const Home = () => {
@@ -7,9 +8,8 @@ const Home = () => {
 	const connected = localStorage.getItem('connected');
 	return (
 		<div>
-			<div>
-				{connected ? <Profil name={user} /> : <Account />}
-			</div>
+			{connected ? <Profil name={user} /> : <Account />}
+			<Navigation />
 			<p>Hello {connected ? user : 'World'}!</p>
 		</div>
 	);

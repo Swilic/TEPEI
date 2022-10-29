@@ -11,10 +11,15 @@ const routes = async function (fastify) {
 
 		const person = await users.findOne({ name: user });
 		if (person === null)
-			return reply.status(401).send('Mot de passe ou utilisateur incorrect');
+			return reply
+				.status(401)
+				.send('Mot de passe ou utilisateur incorrect');
 
 		const match = await bcrypt.compare(pass, person.mdp);
-		if (!match) return reply.status(401).send('Mot de passe ou utilisateur incorrect');
+		if (!match)
+			return reply
+				.status(401)
+				.send('Mot de passe ou utilisateur incorrect');
 
 		reply.send({
 			status: 'Clear',
