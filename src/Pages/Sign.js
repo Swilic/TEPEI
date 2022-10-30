@@ -12,7 +12,7 @@ const Sign = () => {
 		const user = userRef.current.value;
 		const pass = passRef.current.value;
 
-		axios(`http://localhost:2999/account/sign`, {
+		axios('http://localhost:2999/account/sign', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			data: {

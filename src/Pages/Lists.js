@@ -1,11 +1,17 @@
-import axios from 'axios'
-import React from 'react'
+import axios from 'axios';
+import React from 'react';
 
 function Listes() {
-    axios.get()
-  return (
-    <div>Listes</div>
-  )
+	axios('http://localhost:2999/user/lists', {
+		method: 'post',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		data: {
+			auth: localStorage.getItem('token'),
+		},
+	});
+	return <div>Listes</div>;
 }
 
-export default Listes
+export default Listes;

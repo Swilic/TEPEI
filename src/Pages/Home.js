@@ -1,15 +1,12 @@
 import React from 'react';
-import Account from '../Components/Account.js';
-import Navigation from '../Components/Navigation.js';
-import Profil from '../Components/Profil.js';
+import HomeAuth from '../utils/HomeAuth.js';
 
 const Home = () => {
 	const user = localStorage.getItem('user');
 	const connected = localStorage.getItem('connected');
 	return (
 		<div>
-			{connected ? <Profil name={user} /> : <Account />}
-			<Navigation />
+			<HomeAuth name={user} connected={connected} />
 			<p>Hello {connected ? user : 'World'}!</p>
 		</div>
 	);

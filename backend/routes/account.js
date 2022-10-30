@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const routes = async function (fastify) {
 	const users = await fastify.mongo.db.collection('user');
 
+	// Connexion
 	await fastify.post('/login', async (request, reply) => {
 		const {
 			body: { user, pass },
@@ -25,13 +26,14 @@ const routes = async function (fastify) {
 			status: 'Clear',
 			user: user,
 			token: jwt.sign(
-				{ user: user },
+				{ user: person._id },
 				"Vgfbsè§('98è§à!ç§è(JHGFC6U8VTcf§'(c))),tuµù$$µybbfoUR(98VGvesdfv76fyg!§vreè",
 				{ expiresIn: '24h' }
 			),
 		});
 	});
 
+	// Creation
 	await fastify.post('/sign', async (request, reply) => {
 		const {
 			body: { user, pass },

@@ -11,7 +11,7 @@ const Login = () => {
 		event.preventDefault();
 		const user = userRef.current.value;
 		const pass = passRef.current.value;
-		axios(`http://localhost:2999/account/login`, {
+		axios('http://localhost:2999/account/login', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
