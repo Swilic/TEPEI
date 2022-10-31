@@ -1,7 +1,6 @@
 const fastify = require('fastify')({ logger: true });
 const cors = require('@fastify/cors');
 const dbconnector = require('./middleWare/mongo.js');
-const auth = require('./middleWare/authentication.js');
 const routes = require('./routes/account.js');
 const lists = require('./routes/lists.js');
 
@@ -10,7 +9,6 @@ fastify.register(cors, {
 	methods: ['GET', 'POST'],
 });
 fastify.register(dbconnector);
-
 
 fastify.register(routes, { prefix: '/account' });
 fastify.register(lists, {prefix: '/user'});

@@ -28,7 +28,7 @@ const routes = async function (fastify) {
 			token: jwt.sign(
 				{ user: person._id },
 				"Vgfbsè§('98è§à!ç§è(JHGFC6U8VTcf§'(c))),tuµù$$µybbfoUR(98VGvesdfv76fyg!§vreè",
-				{ expiresIn: '24h' }
+				{ expiresIn: '6h' }
 			),
 		});
 	});
