@@ -1,17 +1,17 @@
 import axios from 'axios';
 import React from 'react';
 
-function Listes() {
+const Listes = function () {
 	axios('http://localhost:2999/user/lists', {
-		method: 'post',
+		method: 'get',
 		headers: {
 			'Content-Type': 'application/json',
+			Authorization: `Bearer ${localStorage.getItem('token')}`,
 		},
-		data: {
-			auth: localStorage.getItem('token'),
-		},
+	}).then((res) => {
+		console.log(res);
 	});
 	return <div>Listes</div>;
-}
+};
 
 export default Listes;
