@@ -11,7 +11,7 @@ fastify.register(cors, {
 fastify.register(dbconnector);
 
 fastify.register(routes, { prefix: '/account' });
-fastify.register(lists, {prefix: '/user'});
+fastify.register(lists, { prefix: '/user' });
 
 // Run the server!
 fastify.listen({ port: 2999 }, (err) => {

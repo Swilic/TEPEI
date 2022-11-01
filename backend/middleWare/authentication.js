@@ -9,9 +9,11 @@ const auth = function (fastify, option, done) {
 		jwt.verify(
 			authorization.split(' ')[1],
 			"Vgfbsè§('98è§à!ç§è(JHGFC6U8VTcf§'(c))),tuµù$$µybbfoUR(98VGvesdfv76fyg!§vreè",
-			async (err, decoded) => {
-				if (err) console.error(err);
-
+			(err, decoded) => {
+				if (err || decoded == undefined) {
+					console.error(err);
+					reply.send('Unvalid token!');
+				}
 				const userObjectId = new ObjectId(decoded.user);
 				request.user = userObjectId;
 			}
