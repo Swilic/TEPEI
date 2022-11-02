@@ -4,7 +4,8 @@ import Sign from './Pages/Sign';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Lists from './Pages/Lists';
-import List from './Pages/List';
+import List from './Pages/Cards';
+import NewList from './Pages/NewList';
 
 const App = () => {
 	return (
@@ -15,6 +16,7 @@ const App = () => {
 				<Route path='/login' element={<Login />} />
 				<Route path='/lists' element={<Lists />} />
 				<Route path='/lists/list' element={<List />} />
+				<Route path='/creation' element={<NewList />} />
 			</Routes>
 		</BrowserRouter>
 	);

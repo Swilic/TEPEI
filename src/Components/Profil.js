@@ -1,14 +1,14 @@
 import React from 'react';
+import logOut from '../utils/Logout';
 
 function Profil(props) {
-	const logOut = function () {
-		localStorage.clear();
-		location.reload();
-	};
+	const deconnected = function(){
+		logOut('home');
+	}
 	return (
 		<div>
 			<div>{props.name}</div>
-			<button onClick={logOut}>Deconnexion!</button>
+			<button onClick={deconnected}>Deconnexion!</button>
 		</div>
 	);
 }
