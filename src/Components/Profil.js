@@ -1,5 +1,5 @@
 import React from 'react';
-import logOut from '../utils/Logout';
+import logOut from '../utils/Logout.js';
 
 function Profil(props) {
 	const deconnected = function(){

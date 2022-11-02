@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import logOut from './Logout';
+import logOut from './Logout.js';
 
 const ListsFetching = () => {
 	const [lists, setLists] = useState([]);

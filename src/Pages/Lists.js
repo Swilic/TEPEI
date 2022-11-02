@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-import RenderedLists from '../Components/RenderedLists';
+import RenderedLists from '../Components/RenderedLists.js';
 
 const Lists = () => {
 	return (

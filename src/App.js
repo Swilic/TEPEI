@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Sign from './Pages/Sign';
-import Home from './Pages/Home';
-import Login from './Pages/Login';
-import Lists from './Pages/Lists';
-import List from './Pages/Cards';
-import NewList from './Pages/NewList';
+import Sign from './Pages/Sign.js';
+import Home from './Pages/Home.js';
+import Login from './Pages/Login.js';
+import Lists from './Pages/Lists.js';
+import List from './Pages/Cards.js';
+import NewList from './Pages/NewList.js';
 
 const App = () => {
 	return (

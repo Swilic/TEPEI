@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import ListsFetching from '../utils/ListsFetching';
+import ListsFetching from '../utils/ListsFetching.js';
 
 const RenderedLists = () => {
 	const lists = ListsFetching();
