@@ -1,16 +1,18 @@
 import React from 'react';
 import logOut from '../utils/Logout.js';
 
-function Profil(props) {
-	const deconnected = function(){
-		logOut('home');
-	}
+const Profil = (props) => {
 	return (
 		<div>
 			<div>{props.name}</div>
-			<button onClick={deconnected}>Deconnexion!</button>
+			<button
+				onClick={() => {
+					logOut('home');
+				}}>
+				Deconnexion!
+			</button>
 		</div>
 	);
-}
+};
 
 export default Profil;

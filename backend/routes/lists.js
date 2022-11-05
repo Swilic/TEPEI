@@ -13,7 +13,6 @@ const lists = async function (fastify) {
 				Title,
 			};
 		});
-
 		reply.send(listFiltered);
 	});
 };
