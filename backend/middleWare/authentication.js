@@ -14,8 +14,7 @@ const auth = function (fastify, option, done) {
 					console.error(err);
 					reply.send('Unvalid token!');
 				}
-				const userObjectId = new ObjectId(decoded.user);
-				request.user = userObjectId;
+				request.user = new ObjectId(decoded.user);
 			}
 		);
 		done();
