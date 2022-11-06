@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import List from '../Components/List';
+import List from '../Components/List.js';
+const logOut = require('../utils/Logout.js');
 
 const NewList = () => {
 	const nav = useNavigate();
@@ -9,7 +10,7 @@ const NewList = () => {
 	const responseRef = useRef(null);
 	const titleRef = useRef(null);
 	const [card, setCard] = useState();
-	
+
 	const handleCard = (e) => {
 		e.preventDefault();
 		setCard((prev) => ({
@@ -28,7 +29,8 @@ const NewList = () => {
 				title: titleRef.current.value,
 				questions: card,
 			},
-		}).then(() => {
+		}).then((res) => {
+			if (res.data === 'Unvalid token!') logOut();
 			nav('/lists');
 		});
 	};
