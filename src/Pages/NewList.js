@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import List from '../Components/List.js';
-const logOut = require('../utils/Logout.js');
+import logOut from '../utils/Logout.js';
 
 const NewList = () => {
 	const nav = useNavigate();

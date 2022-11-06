@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ListsFetching from '../utils/ListsFetching.js';
-const logOut = require('../utils/Logout.js');
+import logOut from '../utils/Logout.js';
 
 const RenderedLists = () => {
 	const lists = ListsFetching();

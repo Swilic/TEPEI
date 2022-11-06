@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-const logOut = require('../utils/Logout.js');
+import logOut from '../utils/Logout.js';
 
 const List = () => {
 	const location = useLocation();
