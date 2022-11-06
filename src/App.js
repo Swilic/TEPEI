@@ -4,7 +4,7 @@ import Sign from './Pages/Sign.js';
 import Home from './Pages/Home.js';
 import Login from './Pages/Login.js';
 import Lists from './Pages/Lists.js';
-import List from './Pages/Cards.js';
+import List from './Pages/List.js';
 import NewList from './Pages/NewList.js';
 
 const App = () => {

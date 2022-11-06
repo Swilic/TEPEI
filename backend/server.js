@@ -6,7 +6,7 @@ const lists = require('./routes/lists.js');
 
 fastify.register(cors, {
 	origin: '*',
-	methods: ['GET', 'POST'],
+	methods: ['GET', 'POST', 'DELETE'],
 });
 fastify.register(dbconnector);
 

@@ -7,13 +7,27 @@ const lists = async function (fastify) {
 		const lists = await Lists.find({ owner: request.user }).toArray();
 
 		const listFiltered = lists.map((element) => {
-			const { dict, Title } = element;
+			const { questions, title } = element;
 			return {
-				dict,
-				Title,
+				questions,
+				title,
 			};
 		});
 		reply.send(listFiltered);
+	});
+	await fastify.post('/list', async (request, reply) => {
+		await Lists.insertOne({
+			owner: request.user,
+			title: request.body.title,
+			questions: request.body.questions,
+		});
+		reply.send('Should be done kekW');
+	});
+	await fastify.delete('/list', async (request, reply) => {
+		await Lists.deleteOne({
+			title: request.body.title,
+		});
+		reply.send('What does the fox says');
 	});
 };
 

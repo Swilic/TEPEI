@@ -1,15 +1,18 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const List = (props) => {
-	const a = Object.entries(props.card).map((element) => {
-		return (
-			<Fragment>
-				<li>{element[0]}</li>
-				<li>{element[1]}</li>
-			</Fragment>
-		);
-	});
-	return <ul>{a}</ul>;
+	return (
+		<ul>
+			{props.card.map((element, index) => {
+				return (
+					<li key={index}>
+						<p>{element[0]}</p>
+						<p>{element[1]}</p>
+					</li>
+				);
+			})}
+		</ul>
+	);
 };
 
 export default List;
