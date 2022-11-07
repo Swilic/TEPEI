@@ -7,8 +7,8 @@ const HomeAuth = (props) => {
 	if (props.connected) {
 		return (
 			<Fragment>
-				<Profil name={props.name} />
 				<Navigation />
+				<Profil />
 			</Fragment>
 		);
 	} else {

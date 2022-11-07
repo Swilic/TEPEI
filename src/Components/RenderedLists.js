@@ -2,7 +2,6 @@ import axios from 'axios';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ListsFetching from '../utils/ListsFetching.js';
-import logOut from '../utils/Logout.js';
 
 const RenderedLists = () => {
 	const lists = ListsFetching();
@@ -15,28 +14,29 @@ const RenderedLists = () => {
 			},
 			data: { title },
 		}).then(() => {
-			if (res.data === 'Unvalid token!') logOut();
 			location.reload();
 		});
 	};
 	return (
-		<ul>
-			{lists.map((element) => {
-				return (
-					<li key={element.title}>
-						<NavLink to='list' state={element}>
-							<h2>{element.title}</h2>
-						</NavLink>
-						<button
-							onClick={() => {
-								deleteList(element.title);
-							}}>
-							Delete
-						</button>
-					</li>
-				);
-			})}
-		</ul>
+		<nav className='navLists'>
+			<ul className='lists'>
+				{lists.map((element) => {
+					return (
+						<li key={element.title} className='list'>
+							<NavLink to='list' state={element}>
+								<h2>{element.title}</h2>
+							</NavLink>
+							<button
+								onClick={() => {
+									deleteList(element.title);
+								}}>
+								Delete
+							</button>
+						</li>
+					);
+				})}
+			</ul>
+		</nav>
 	);
 };
 

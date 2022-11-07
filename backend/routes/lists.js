@@ -9,8 +9,8 @@ const lists = async function (fastify) {
 		const listFiltered = lists.map((element) => {
 			const { questions, title } = element;
 			return {
-				questions,
 				title,
+				questions,
 			};
 		});
 		reply.send(listFiltered);
@@ -30,12 +30,12 @@ const lists = async function (fastify) {
 		reply.send('What does the fox says');
 	});
 	await fastify.patch('/list', async (request, reply) => {
-		const list = Lists.findOne({title: request.body.title});
+		const list = await Lists.findOne({title: request.body.title});
 		const questions = Object.entries(list.questions);
-		console.log(questions)
-		questions.splice(request.body.index, 1);
-		console.log(questions)
+		questions.splice(request.body.index, 1)
+		await Lists.updateOne({title: request.body.title}, {$set:{questions: Object.fromEntries(questions)}})
 		
+		reply.send('It is update my friend!')
 	})
 };
 

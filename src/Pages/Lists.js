@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Navigation from '../Components/Navigation.js';
 import RenderedLists from '../Components/RenderedLists.js';
 
 const Lists = () => {
 	return (
 		<div>
-			<Link to='/creation'>Nouvelle liste</Link>
+			<Navigation />
+			<Link to='/creation' className='create'>Nouvelle liste</Link>
 			<RenderedLists />
 		</div>
 	);

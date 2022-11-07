@@ -1,19 +1,5 @@
+@import "./utilities/variables";
 @import "./utilities/mixins";
-@import "./settings";
+@import "./allhere";
 
-.containerConnexion{
-    @include flex;
-}
-.connexion{
-    @include flex; 
-    background-color: rgb(186, 219, 173);
-    width : 35%;
-}
-.refused{
-    background-color: red;
-}
 
-.inscription{
-    @include flex; 
-    background-color: rgb(173, 193, 219);
-}

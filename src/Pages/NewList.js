@@ -1,11 +1,9 @@
 import axios from 'axios';
-import React, { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { Fragment, useRef, useState } from 'react';
 import List from '../Components/List.js';
-import logOut from '../utils/Logout.js';
+import Navigation from '../Components/Navigation.js';
 
 const NewList = () => {
-	const nav = useNavigate();
 	const questionRef = useRef(null);
 	const responseRef = useRef(null);
 	const titleRef = useRef(null);
@@ -29,37 +27,49 @@ const NewList = () => {
 				title: titleRef.current.value,
 				questions: card,
 			},
-		}).then((res) => {
-			if (res.data === 'Unvalid token!') logOut();
-			nav('/lists');
 		});
 	};
 	return (
-		<div>
-			<form>
-				<label htmlFor='title'>Le Titre de votre machin</label>
-				<input type='text' id='title' ref={titleRef} />
-			</form>
-			{card ? <List card={Object.entries(card)} /> : ''}
-			<form>
-				<label htmlFor='question'>Question</label>
-				<input
-					id='question'
-					type='text'
-					placeholder='Question'
-					ref={questionRef}
-				/>
-				<label htmlFor='response'>Réponse</label>
-				<input
-					id='response'
-					type='text'
-					placeholder='Réponse'
-					ref={responseRef}
-				/>
-				<button onClick={handleCard}>+</button>
-			</form>
-			<button onClick={sendList}>Finito Pipo</button>
-		</div>
+		<Fragment>
+			<Navigation />
+
+			<div className='centerList'>
+				<form className='title'>
+					<label htmlFor='title'>Le Titre de votre machin</label>
+					<input type='text' id='title' ref={titleRef} />
+				</form>
+				<form className='questions'>
+					<label htmlFor='question'>Question</label>
+					<input
+						onClick={(e) => {
+							e.target.select();
+						}}
+						id='question'
+						type='text'
+						placeholder='Question'
+						ref={questionRef}
+					/>
+					<label htmlFor='response'>Réponse</label>
+					<input
+						onClick={(e) => {
+							e.target.select();
+						}}
+						id='response'
+						type='text'
+						placeholder='Réponse'
+						ref={responseRef}
+					/>
+					<button className='addList' onClick={handleCard}>
+						Ajouter
+					</button>
+				</form>
+				<h2>{titleRef.current ? titleRef.current.value : ''}</h2>
+				{card ? <List card={Object.entries(card)} /> : ''}
+				<button onClick={sendList} className='create'>
+					Finito Pipo
+				</button>
+			</div>
+		</Fragment>
 	);
 };
 

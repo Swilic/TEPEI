@@ -1,10 +1,9 @@
 import React from 'react';
 import logOut from '../utils/Logout.js';
 
-const Profil = (props) => {
+const Profil = () => {
 	return (
-		<div>
-			<div>{props.name}</div>
+		<div className='profile'>
 			<button
 				onClick={() => {
 					logOut('home');

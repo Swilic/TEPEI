@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import logOut from '../utils/Logout.js';
+import Navigation from '../Components/Navigation';
 
 const List = () => {
-	const location = useLocation();
-	const questions = Object.entries(location.state.questions);
+	const position = useLocation();
+	const questions = Object.entries(position.state.questions);
 
 	const deleteElement = (index) => {
 		axios('http://localhost:2999/user/list', {
@@ -14,30 +14,41 @@ const List = () => {
 				authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 			data: {
-				title: location.state.title,
+				title: position.state.title,
 				index: index,
 			},
 		}).then((res) => {
-			if (res.data === 'Unvalid token!') logOut();
+			const a = document.querySelector(`.creationList.${index}`);
+			a.style.display = 'none';
+			console.log(res.data);
 		});
 	};
 	return (
-		<ul>
-			{questions.map((element, index) => {
-				return (
-					<li key={index}>
-						<p>{element[0]}</p>
-						<p>{element[1]}</p>
-						<button
-							onClick={() => {
-								deleteElement(index);
-							}}>
-							DELEEEEEEEEEEETE
-						</button>
-					</li>
-				);
-			})}
-		</ul>
+		<div>
+			<Navigation />
+			<div className='wrapCenterList'>
+				<ul className='centerList '>
+					{questions.map((element, index) => {
+						return (
+							<li key={index} className={`creationList ${index}`}>
+								<p>
+									<span className='dict'>Question:</span>{' '}
+									{element[0]} <br />
+									<span className='dict'>Response:</span>{' '}
+									{element[1]}
+								</p>
+								<button
+									onClick={() => {
+										deleteElement(index);
+									}}>
+									DELEEEEEEEEEEETE
+								</button>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+		</div>
 	);
 };
 

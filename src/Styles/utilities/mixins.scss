@@ -1,5 +1,8 @@
-@mixin flex {
+@mixin flex($just:center, $ali:center) {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: $just;
+    align-items: $ali;
+}
+@mixin transition($name: color, $ease: ease-out){
+    transition: $name, 0.2s $ease;
 }

@@ -5,9 +5,9 @@ const Home = () => {
 	const user = localStorage.getItem('user');
 	const connected = localStorage.getItem('connected');
 	return (
-		<div>
+		<div className='home'>
+			<p className='helloName'>Hello {connected ? user : 'World'}!</p>
 			<HomeAuth name={user} connected={connected} />
-			<p>Hello {connected ? user : 'World'}!</p>
 		</div>
 	);
 };
