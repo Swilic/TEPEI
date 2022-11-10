@@ -6,7 +6,7 @@ const Profil = () => {
 		<div className='profile'>
 			<button
 				onClick={() => {
-					logOut('home');
+					logOut();
 				}}>
 				Deconnexion!
 			</button>
