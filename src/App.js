@@ -6,6 +6,7 @@ import Login from './Pages/Login.js';
 import Lists from './Pages/Lists.js';
 import List from './Pages/List.js';
 import NewList from './Pages/NewList.js';
+import Study from './Pages/Study.js';
 
 const App = () => {
 	return (
@@ -17,6 +18,7 @@ const App = () => {
 				<Route path='/lists' element={<Lists />} />
 				<Route path='/lists/list' element={<List />} />
 				<Route path='/creation' element={<NewList />} />
+				<Route path='/study' element={<Study />} />
 			</Routes>
 		</BrowserRouter>
 	);
