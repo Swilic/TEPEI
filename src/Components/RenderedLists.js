@@ -40,7 +40,7 @@ const RenderedLists = () => {
 									onClick={() => {
 										deleteList(element.title);
 									}}>
-									Delete
+									Supprimer
 								</button>
 							</li>
 							<button

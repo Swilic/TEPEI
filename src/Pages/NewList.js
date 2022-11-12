@@ -34,40 +34,46 @@ const NewList = () => {
 			<Navigation />
 
 			<div className='centerList'>
-				<form className='title'>
-					<label htmlFor='title'>Le Titre de votre machin</label>
-					<input type='text' id='title' ref={titleRef} />
-				</form>
-				<form className='questions'>
-					<label htmlFor='question'>Question</label>
-					<input
-						onClick={(e) => {
-							e.target.select();
-						}}
-						id='question'
-						type='text'
-						placeholder='Question'
-						ref={questionRef}
-					/>
-					<label htmlFor='response'>Réponse</label>
-					<input
-						onClick={(e) => {
-							e.target.select();
-						}}
-						id='response'
-						type='text'
-						placeholder='Réponse'
-						ref={responseRef}
-					/>
-					<button className='addList' onClick={handleCard}>
-						Ajouter
+				<div className='wrapForm'>
+					<form
+						className='title'
+						onSubmit={(e) => e.preventDefault()}>
+						<label htmlFor='title'>Le titre de votre liste</label>
+						<input type='text' id='title' ref={titleRef} />
+					</form>
+					<form className='questions'>
+						<label htmlFor='question'>Question</label>
+						<input
+							onClick={(e) => {
+								e.target.select();
+							}}
+							id='question'
+							type='text'
+							placeholder='Question'
+							ref={questionRef}
+						/>
+						<label htmlFor='response'>Réponse</label>
+						<input
+							onClick={(e) => {
+								e.target.select();
+							}}
+							id='response'
+							type='text'
+							placeholder='Réponse'
+							ref={responseRef}
+						/>
+						<button className='addList' onClick={handleCard}>
+							Ajouter
+						</button>
+					</form>
+				</div>
+				<div className='containerLists'>
+					<h2>{titleRef.current ? titleRef.current.value : ''}</h2>
+					{card ? <List card={Object.entries(card)} /> : ''}
+					<button onClick={sendList} className='create'>
+						Liste finie
 					</button>
-				</form>
-				<h2>{titleRef.current ? titleRef.current.value : ''}</h2>
-				{card ? <List card={Object.entries(card)} /> : ''}
-				<button onClick={sendList} className='create'>
-					Finito Pipo
-				</button>
+				</div>
 			</div>
 		</Fragment>
 	);

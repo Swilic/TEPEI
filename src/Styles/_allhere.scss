@@ -6,7 +6,7 @@ html, body{
     font-size: $font;
 }
 body{
-    background-color: rgb(236, 243, 241);
+    background-color: $backG;
 }
 h2{
     margin: 0px;
@@ -51,6 +51,7 @@ a{
     }
 }
 input{
+    padding: $pad - 3 $pad;
     width: 15vw;
     height: 4vh;
     border: solid 1px $border;
@@ -104,8 +105,31 @@ input{
     @include flex;
     padding: 0;
 }
+.centerList{
+    @include flex;
+    flex-direction: column;
+    form.title{
+        padding-top: 15px;
+    }
+    .wrapForm{
+        padding: 2*$pad;
+        width: 25vw;
+        border: solid 2px black;
+        border-radius: $radius;
+        background-color: $backGDarker;
+    }
+    label{
+        padding-top: $pad;
+    }
+}
+.containerLists{
+    @include flex;
+    flex-direction: column;
+    button{
+        margin: $pad;
+    }
+}
 .create{
-    position: absolute;
     top: 10vh;
     left: 10vw;
     border: solid 2px $border;
@@ -114,6 +138,7 @@ input{
     text-decoration: none;
     padding: $pad;
     margin: $pad - 2;
+    margin-left: 100px;
     &:active{
         scale: 1.05;
         @include transition(scale);
@@ -175,4 +200,63 @@ form{
 }
 .creationList{
     padding: $pad;
+}
+.wrapStudy{
+    margin-top: 20vh;
+    @include flex;
+    .study{
+        @include flex;
+        flex-direction: column;
+        width: 60vw;
+    }
+    .wrapQuestions{
+        width: 100%;
+    h2{
+        padding-left: 50px;;
+        font-size: 2.3rem;
+    span{
+        color: $border;
+    }
+    }
+    }
+}
+.buttonGame{
+    width: 60%;
+    padding: 10px;
+    @include flex(space-between);
+    button{
+        height: 3rem;
+    }
+    .buttonFailed{
+        background-color: $failedCol;
+        color: rgb(196, 179, 35);
+        &:hover{
+            background-color: $failedColHov;
+            color: $fcolHover;
+            @include transition;
+        }
+        &:active{
+            background-color: $failedColAct;
+            color: $fcolActive;
+            scale: 0.95;
+            @include transition(ease);
+            @include transition(scale);
+        }
+    }
+    .buttonSucces{
+        background-color: $succesCol;
+        color: rgb(196, 179, 35);
+        &:hover{
+            background-color: $succesColHov;
+            color: $fcolHover;
+            @include transition;
+        }
+        &:active{
+            background-color: $succesColAct;
+            color: $fcolActive;
+            scale: 0.95;
+            @include transition(ease);
+            @include transition(scale);
+        }
+    }
 }

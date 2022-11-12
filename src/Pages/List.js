@@ -41,7 +41,7 @@ const List = () => {
 									onClick={() => {
 										deleteElement(index);
 									}}>
-									DELEEEEEEEEEEETE
+									Supprimer
 								</button>
 							</li>
 						);
