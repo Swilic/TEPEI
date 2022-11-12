@@ -6,3 +6,8 @@
 @mixin transition($name: color, $ease: ease-out){
     transition: $name, 0.2s $ease;
 }
+@mixin backG(){
+    background-color: $backGDarker;
+    border: solid 2px black;
+    border-radius: $radius;
+}
