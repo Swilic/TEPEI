@@ -18,8 +18,8 @@ const List = () => {
 				index: index,
 			},
 		}).then((res) => {
-			const a = document.querySelector(`.creationList.${index}`);
-			a.style.display = 'none';
+			const list = document.querySelector(`.creationList${index}`);
+			list.style.display = 'none';
 			console.log(res.data);
 		});
 	};
@@ -30,7 +30,7 @@ const List = () => {
 				<ul className='centerList '>
 					{questions.map((element, index) => {
 						return (
-							<li key={index} className={`creationList ${index}`}>
+							<li key={index} className={`creationList${index}`}>
 								<p>
 									<span className='dict'>Question:</span>{' '}
 									{element[0]} <br />
