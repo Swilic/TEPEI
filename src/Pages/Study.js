@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navigation from '../Components/Navigation.js';
-import StudyCard from '../utils/StudyCard.js';
+import StudyCard from '../Components/StudyCard.js';
 
 const Study = () => {
 	const locate = useLocation();
