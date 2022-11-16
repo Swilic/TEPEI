@@ -1,52 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import StudyDone from '../utils/StudyDone';
+const { randRep, shuffle } = require('../utils/RandomNumber.js');
 
 const StudyCard = (props) => {
-	const [response, setResponse] = useState('');
-	const qcm = [];
-	const [index, setIndex] = useState(-1);
-	const [success, setSuccess] = useState(0);
-	const [last, setLast] = useState(false);
 	const questions = props.questions;
 	const length = questions.length;
-
-	console.log(questions);
-
-	const randRep = () => {
-		let first = Math.floor(Math.random() * length);
-		let second = Math.floor(Math.random() * length);
-		if (
-			qcm.includes(first) ||
-			qcm.includes(second) ||
-			index === first ||
-			index === second
-		) {
-			randRep();
-		}
-		return [first, second];
-	};
+	const [choice, setChoice] = useState();
+	const [success, setSuccess] = useState(0);
+	const [index, setIndex] = useState(0);
+	const [last, setLast] = useState(false);
+	const [falseQuest, setFalseQuest] = useState(randRep(index, length));
+	const [allQuest, setAllQuest] = useState(shuffle([...falseQuest, index]));
 
 	useEffect(() => {
-		setResponse(questions[1][1]);
-
-		console.log(response);
+		setFalseQuest(randRep(index, length));
+		setChoice(-1)
 	}, [index]);
 
-	const validate = (so) => {
-		console.log(so);
-		if (so && !last) {
+	useEffect(() => {
+		setAllQuest(shuffle([...falseQuest, index]));
+	}, [falseQuest]);
+
+	const validate = () => {
+		if (!last && choice === index) {
 			setSuccess((c) => c + 1);
 		}
 		if (length > index + 1) {
 			setIndex((c) => c + 1);
-			setQuestOrResp(0);
 		} else {
 			setLast(true);
 		}
-	};
-
-	const nextQuest = () => {
-		null;
 	};
 	if (last) {
 		return <StudyDone success={success} length={length} />;
@@ -56,16 +39,42 @@ const StudyCard = (props) => {
 				<div className='wrapQuestions'>
 					<h2>
 						<span>Question: </span>
-						{questions[1][0]}
+						{questions[index][0]}
 					</h2>
 				</div>
 				<div className='wrapResponse'>
-					<input type='radio' name='response' id='one' />
-					<label htmlFor='one'>{questions[1][1]}</label>
-					<input type='radio' name='response' id='two' />
-					<label htmlFor='two'>{randRep()[1]}</label>
-					<input type='radio' name='response' id='three' />
-					<label htmlFor='three'>{randRep()[0]}</label>
+					<form onSubmit={(e) => e.preventDefault()}>
+						<input
+							type='radio'
+							name='response'
+							id='one'
+							onChange={() => setChoice(allQuest[0])}
+							checked={choice === allQuest[0] ? true : false}
+							
+						/>
+						<label htmlFor='one'>{questions[allQuest[0]][1]}</label>
+						
+						<input
+							type='radio'
+							name='response'
+							id='two'
+							onChange={() => setChoice(allQuest[1])}
+							checked={choice === allQuest[1] ? true : false }
+						/>
+						<label htmlFor='two'>{questions[allQuest[1]][1]}</label>
+						
+						<input
+							type='radio'
+							name='response'
+							id='three'
+							onChange={() => setChoice(allQuest[2])}
+							checked={choice === allQuest[2] ? true : false}
+						/>
+						<label htmlFor='three'>
+							{questions[allQuest[2]][1]}
+						</label>
+						<button onClick={validate}>Suivant</button>
+					</form>
 				</div>
 			</>
 		);
