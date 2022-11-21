@@ -11,6 +11,7 @@ const NewList = () => {
 
 	const handleCard = (e) => {
 		e.preventDefault();
+		// Add as object the question as key and response as value in the card
 		setCard((prev) => ({
 			...prev,
 			...{ [questionRef.current.value]: responseRef.current.value },
@@ -18,16 +19,24 @@ const NewList = () => {
 	};
 
 	const sendList = () => {
-		axios('http://localhost:2999/user/list', {
-			method: 'POST',
-			headers: {
-				authorization: `Bearer ${localStorage.getItem('token')}`,
-			},
-			data: {
-				title: titleRef.current.value,
-				questions: card,
-			},
-		});
+		if (card === undefined || Object.entries(card).length < 3) {
+			const infoList = document.querySelector('.infoList');
+			infoList.classList.toggle('fail');
+			setTimeout(()=>{
+				infoList.classList.toggle('fail');
+			}, 300)
+		} else {
+			axios('http://localhost:2999/user/list', {
+				method: 'POST',
+				headers: {
+					authorization: `Bearer ${localStorage.getItem('token')}`,
+				},
+				data: {
+					title: titleRef.current.value,
+					questions: card,
+				},
+			});
+		}
 	};
 	return (
 		<Fragment>

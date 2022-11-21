@@ -233,6 +233,10 @@ form{
     font-size: 0.8rem;
     font-style: italic;
     text-align: right;
+    &.fail{
+        animation: wizz 0.3s;
+        color: red;
+    }
 }
 .wrapStudy{
     margin-top: 20vh;

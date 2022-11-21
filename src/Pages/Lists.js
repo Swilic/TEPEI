@@ -19,7 +19,7 @@ const Lists = () => {
 				authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 			data: { title },
-		}).then(() => {
+		}).then((res) => {
 			if (res.data === 'Unvalid token!') {
 				Logout();
 				nav('/');

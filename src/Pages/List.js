@@ -17,10 +17,9 @@ const List = () => {
 				title: position.state.title,
 				index: index,
 			},
-		}).then((res) => {
+		}).then(() => {
 			const list = document.querySelector(`.creationList${index}`);
 			list.style.display = 'none';
-			console.log(res.data);
 		});
 	};
 	return (
