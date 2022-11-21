@@ -58,6 +58,17 @@ input{
     border-radius: $radius;
     font-size: $font - 1;
 }
+.connectionMessage{
+    padding-top: 15vh;
+    text-align: center;
+}
+
+.textPageInfo{
+    text-decoration: underline;
+    padding: $pad 0;
+    text-align: center;
+}
+
 .navElement{
     a{
     text-decoration: none;
@@ -121,6 +132,19 @@ input{
     }
     label{
         padding-top: $pad;
+    }
+    
+}
+.centerList li{
+    @include flex;
+    flex-direction: row-reverse;
+
+    span{
+        display: inline-block;
+        width: 90px;
+    }
+    button{
+        margin-right: $pad + 2;
     }
 }
 .containerLists{
@@ -204,6 +228,11 @@ form{
 }
 .creationList{
     padding: $pad;
+}
+.infoList{
+    font-size: 0.8rem;
+    font-style: italic;
+    text-align: right;
 }
 .wrapStudy{
     margin-top: 20vh;
