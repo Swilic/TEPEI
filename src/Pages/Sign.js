@@ -27,10 +27,13 @@ const Sign = () => {
 		<div>
 			<p className='textPageInfo'>Création de compte</p>
 			<form className='inscription' onSubmit={handleChange}>
+
 				<label htmlFor='mail'>Nom d'utilisateur</label>
 				<input type='text' ref={userRef} id='mail' />
+
 				<label htmlFor='password'>Password</label>
 				<input type='password' ref={passRef} id='password' />
+				
 				<button type='submit'>Connexion</button>
 			</form>
 		</div>

@@ -1,7 +1,8 @@
-const auth = require('../middleWare/authentication.js');
+const authentication = require('../middleWare/authentication.js');
 
 const lists = async function (fastify) {
-	fastify.register(auth);
+	fastify.register(authentication);
+	
 	const Lists = await fastify.mongo.db.collection('lists');
 	await fastify.get('/lists', async (request, reply) => {
 		const lists = await Lists.find({ owner: request.user }).toArray();
