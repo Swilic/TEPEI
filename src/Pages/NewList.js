@@ -16,15 +16,20 @@ const NewList = () => {
 			...prev,
 			...{ [questionRef.current.value]: responseRef.current.value },
 		}));
+		document.querySelector('#question').select();
 	};
 
 	const sendList = () => {
-		if (card === undefined || Object.entries(card).length < 3) {
+		if (
+			card === undefined ||
+			Object.entries(card).length < 3 ||
+			titleRef.current.value === ''
+		) {
 			const infoList = document.querySelector('.infoList');
 			infoList.classList.toggle('fail');
-			setTimeout(()=>{
+			setTimeout(() => {
 				infoList.classList.toggle('fail');
-			}, 300)
+			}, 300);
 		} else {
 			axios('http://localhost:2999/user/list', {
 				method: 'POST',
@@ -51,42 +56,47 @@ const NewList = () => {
 							<label htmlFor='title'>
 								Le titre de votre liste
 							</label>
-							<input type='text' id='title' ref={titleRef} />
+							<input
+								type='text'
+								id='title'
+								ref={titleRef}
+							/>
 						</form>
+
 						<form className='questions'>
 							<label htmlFor='question'>Question</label>
 							<input
-								onClick={(e) => {
-									e.target.select();
-								}}
 								id='question'
 								type='text'
 								placeholder='Question'
 								ref={questionRef}
 							/>
+
 							<label htmlFor='response'>Réponse</label>
 							<input
-								onClick={(e) => {
-									e.target.select();
-								}}
 								id='response'
 								type='text'
 								placeholder='Réponse'
 								ref={responseRef}
 							/>
-							<button className='addList' onClick={handleCard}>
+							<button
+								className='addList'
+								onClick={handleCard}>
 								Ajouter
 							</button>
 						</form>
 					</div>
 					<p className='infoList'>
-						La liste doit posséder au minimum 3 questions
+						La liste doit posséder au minimum 3 questions ou un
+						titre
 					</p>
 				</div>
 				<div className='containerLists'>
 					<h2>{titleRef.current ? titleRef.current.value : ''}</h2>
 					{card ? <List card={Object.entries(card)} /> : ''}
-					<button onClick={sendList} className='create'>
+					<button
+						onClick={sendList}
+						className='create'>
 						Liste finie
 					</button>
 				</div>
