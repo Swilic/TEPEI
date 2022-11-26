@@ -1,306 +1,315 @@
-html, body{
-    height: 100vh;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
-    font-size: $font;
+html,
+body {
+	height: 100vh;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+	font-size: $font;
 }
-body{
-    background-color: $backG;
+body {
+	background-color: $backG;
 }
-h2{
-    margin: 0px;
-    padding: 20px;
+h2 {
+	margin: 0px;
+	padding: 20px;
 }
-button{
-    height: 2rem;
-    cursor: pointer;
-    font-size: $font - 2;
-    padding: $pad;
-    background-color: $buttonCol;
-    border: none;
-    border-radius: $radius;
-    &:hover{
-        background-color: $buttonColHover;
-        color: $fcolHover;
-        @include transition;
-    }
-    &:active{
-        background-color: $buttonColActive;
-        color: $fcolActive;
-        scale: 0.95;
-        @include transition(ease);
-        @include transition(scale);
+button {
+	height: 2rem;
+	cursor: pointer;
+	font-size: $font - 2;
+	padding: $pad;
+	background-color: $buttonCol;
+	border: none;
+	border-radius: $radius;
+	&:hover {
+		background-color: $buttonColHover;
+		color: $fcolHover;
+		@include transition;
+	}
+	&:active {
+		background-color: $buttonColActive;
+		color: $fcolActive;
+		scale: 0.95;
+		@include transition(ease);
+		@include transition(scale);
+	}
 }
+ul {
+	padding: 0;
+	margin: 0px;
 }
-ul{
-    padding: 0;
-    margin: 0px;
+li {
+	list-style: none;
 }
-li{
-    list-style: none;
+a {
+	text-decoration: underline;
+	color: $linkCol;
+	&:hover {
+		color: $linkColHover;
+	}
+	&:active {
+		color: $linkColActive;
+	}
 }
-a{
-    text-decoration: underline;
-    color: $linkCol;
-    &:hover{
-        color: $linkColHover;
-    }
-    &:active{
-        color:$linkColActive;
-    }
+input {
+	padding: $pad - 3 $pad;
+	width: 15vw;
+	height: 4vh;
+	border: solid 1px $border;
+	border-radius: $radius;
+	font-size: $font - 1;
 }
-input{
-    padding: $pad - 3 $pad;
-    width: 15vw;
-    height: 4vh;
-    border: solid 1px $border;
-    border-radius: $radius;
-    font-size: $font - 1;
-}
-.connectionMessage{
-    padding-top: 15vh;
-    text-align: center;
-}
-
-.textPageInfo{
-    text-decoration: underline;
-    padding: $pad 0;
-    text-align: center;
+.connectionMessage {
+	padding-top: 15vh;
+	text-align: center;
 }
 
-.navElement{
-    a{
-    text-decoration: none;
-    }
-    .active{
-        border-bottom: solid 2px;
-        border-color: $linkColActive;
-    }
-}
-.containerConnexion{
-    @include flex;
-}
-.connexion{
-    @include flex; 
-    background-color: rgb(186, 219, 173);
-    width : 35%;
-}
-.refused{
-    background-color: red;
+.textPageInfo {
+	text-decoration: underline;
+	padding: $pad 0;
+	text-align: center;
 }
 
-.inscription{
-    @include flex; 
-    background-color: rgb(173, 193, 219);
+.navElement {
+	a {
+		text-decoration: none;
+	}
+	.active {
+		border-bottom: solid 2px;
+		border-color: $linkColActive;
+	}
 }
-.home{
-    @include flex(space-evenly);
-    padding: 0;
-    .helloName{
-        margin: 0;
-        font-size: $ftitle;
-        font-weight: 600;
-        padding: 20px 0;
-    }
+.containerConnexion {
+	@include flex;
 }
-.navigation{
-    @include flex;
+.connexion {
+	@include flex;
+	background-color: rgb(186, 219, 173);
+	width: 35%;
+	.errorConnection {
+		display: none;
+		font-size: 0.8rem;
+		font-style: italic;
+		&.show {
+			display: inline-block;
+		}
+		&.refused {
+			animation: wizz 0.3s;
+			color: red;
+			transition: color 0.2s ease-out;
+		}
+	}
+}
 
-    padding : 25px 0;
-    .navElement{
-        padding: 0 $pad;
-    }
+.inscription {
+	@include flex;
+	background-color: rgb(173, 193, 219);
 }
-.profile{
-    @include flex;
-    padding: 0;
+.home {
+	@include flex(space-evenly);
+	padding: 0;
+	.helloName {
+		margin: 0;
+		font-size: $ftitle;
+		font-weight: 600;
+		padding: 20px 0;
+	}
 }
-.centerList{
-    padding-top: 5vh;
-    @include flex(space-between, flex-start);
-    flex-direction: row;
-    form.title{
-        padding-top: 15px;
-    }
-    .wrapForm{
-        padding: 2*$pad;
-        margin-left: 15vw;
-        min-width: 20vw;
-        width: 25vw;
-        @include backG;
-    }
-    label{
-        padding-top: $pad;
-    }
-    
-}
-.centerList li{
-    @include flex;
-    flex-direction: row-reverse;
+.navigation {
+	@include flex;
 
-    span{
-        display: inline-block;
-        width: 90px;
-    }
-    button{
-        margin-right: $pad + 2;
-    }
+	padding: 25px 0;
+	.navElement {
+		padding: 0 $pad;
+	}
 }
-.containerLists{
-    margin: 0 15vw;
-    @include flex;
-    flex-direction: column;
-    button{
-        margin: $pad;
-    }
-    li{
-        margin: 0 3vw;
-    }
+.profile {
+	@include flex;
+	padding: 0;
 }
-.create{
-    top: 10vh;
-    left: 10vw;
-    border: solid 2px $border;
-    border-radius: $radius;
-    background-color: rgb(201, 201, 201);
-    text-decoration: none;
-    padding: $pad;
-    margin: $pad - 2;
-    margin-left: 100px;
-    &:active{
-        scale: 1.05;
-        @include transition(scale);
-    }
+.centerList {
+	padding-top: 5vh;
+	@include flex(space-between, flex-start);
+	flex-direction: row;
+	form.title {
+		padding-top: 15px;
+	}
+	.wrapForm {
+		padding: 2 * $pad;
+		margin-left: 15vw;
+		min-width: 20vw;
+		width: 25vw;
+		@include backG;
+	}
+	label {
+		padding-top: $pad;
+	}
 }
-.navLists{
-    @include flex;
-    padding: 30px 0;
-    .lists{
-        padding: 0;
-        width: 60vw;
-        @include flex($ali: unset);
-        flex-direction: column;
-    .list{
-        @include flex(space-between);
-        flex-grow: 1;
-        box-shadow: 0px 0px 5px $shadowCol, -0px -0px 5px $shadowCol, 0px -0px 5px $shadowCol, -0px 0px 5px $shadowCol;
-        @include backG;
-        margin: $pad - 2;
-        &:active{    
-            scale: 1.05;
-            @include transition(scale);
-        }
-        button{
-            margin: $pad + 2;
-        }
-    }
-    }
-}
-.wrapLists{
-    @include flex;
-}
-.play{
-    background-color: $linkColActive;
-    
-}
-.wrapCenterList{
-    @include flex;
-    .centerList{
-        padding: 50px 0;
-        width: 50vw;
-        @include flex($ali:flex-start);
-        flex-direction: column;
-        li{
-            padding-left: 150px;
-        }
-    }
-}
-form{
-    @include flex;
-    flex-direction: column;
-    .addList{
-        margin: $pad;
-    }
-}
-.dict{
-    color: $shadowCol;
-}
-.creationList{
-    padding: $pad;
-}
-.infoList{
-    font-size: 0.8rem;
-    font-style: italic;
-    text-align: right;
-    &.fail{
-        animation: wizz 0.3s;
-        color: red;
-    }
-}
-.wrapStudy{
-    margin-top: 20vh;
-    @include flex;
-    .study{
-        @include flex;
-        @include backG;
-        flex-direction: column;
-        width: 60vw;
+.centerList li {
+	@include flex;
+	flex-direction: row-reverse;
 
-    }
-    .wrapQuestions{
-        width: 100%;
-        border-radius: $radius $radius 0 0 ;
-        background-color: rgb(213, 223, 224);
-    h2{
-        padding-left: 50px;;
-        font-size: 2.3rem;
-    span{
-        color: $border;
-    }
-    }
-    }
+	span {
+		display: inline-block;
+		width: 90px;
+	}
+	button {
+		margin-right: $pad + 2;
+	}
 }
-.buttonGame{
-    width: 60%;
-    padding: 10px;
-    @include flex(space-between);
-    button{
-        height: 3rem;
-    }
-    .buttonFailed{
-        background-color: $failedCol;
-        color: rgb(196, 179, 35);
-        &:hover{
-            background-color: $failedColHov;
-            color: $fcolHover;
-            @include transition;
-        }
-        &:active{
-            background-color: $failedColAct;
-            color: $fcolActive;
-            scale: 0.95;
-            @include transition(ease);
-            @include transition(scale);
-        }
-    }
-    .buttonSucces{
-        background-color: $succesCol;
-        color: rgb(196, 179, 35);
-        &:hover{
-            background-color: $succesColHov;
-            color: $fcolHover;
-            @include transition;
-        }
-        &:active{
-            background-color: $succesColAct;
-            color: $fcolActive;
-            scale: 0.95;
-            @include transition(ease);
-            @include transition(scale);
-        }
-    }
+.containerLists {
+	margin: 0 15vw;
+	@include flex;
+	flex-direction: column;
+	button {
+		margin: $pad;
+	}
+	li {
+		margin: 0 3vw;
+	}
 }
-.score{
-    font-size: 2.5rem;
+.create {
+	top: 10vh;
+	left: 10vw;
+	border: solid 2px $border;
+	border-radius: $radius;
+	background-color: rgb(201, 201, 201);
+	text-decoration: none;
+	padding: $pad;
+	margin: $pad - 2;
+	margin-left: 100px;
+	&:active {
+		scale: 1.05;
+		@include transition(scale);
+	}
+}
+.navLists {
+	@include flex;
+	padding: 30px 0;
+	.lists {
+		padding: 0;
+		width: 60vw;
+		@include flex($ali: unset);
+		flex-direction: column;
+		.list {
+			@include flex(space-between);
+			flex-grow: 1;
+			box-shadow: 0px 0px 5px $shadowCol, -0px -0px 5px $shadowCol,
+				0px -0px 5px $shadowCol, -0px 0px 5px $shadowCol;
+			@include backG;
+			margin: $pad - 2;
+			&:active {
+				scale: 1.05;
+				@include transition(scale);
+			}
+			button {
+				margin: $pad + 2;
+			}
+		}
+	}
+}
+.wrapLists {
+	@include flex;
+}
+.play {
+	background-color: $linkColActive;
+}
+.wrapCenterList {
+	@include flex;
+	.centerList {
+		padding: 50px 0;
+		width: 50vw;
+		@include flex($ali: flex-start);
+		flex-direction: column;
+		li {
+			padding-left: 150px;
+		}
+	}
+}
+form {
+	@include flex;
+	flex-direction: column;
+	.addList {
+		margin: $pad;
+	}
+}
+.dict {
+	color: $shadowCol;
+}
+.creationList {
+	padding: $pad;
+}
+.infoList {
+	font-size: 0.8rem;
+	font-style: italic;
+	text-align: right;
+	&.fail {
+		animation: wizz 0.3s;
+		color: red;
+	}
+}
+.wrapStudy {
+	margin-top: 20vh;
+	@include flex;
+	.study {
+		@include flex;
+		@include backG;
+		flex-direction: column;
+		width: 60vw;
+	}
+	.wrapQuestions {
+		width: 100%;
+		border-radius: $radius $radius 0 0;
+		background-color: rgb(213, 223, 224);
+		h2 {
+			padding-left: 50px;
+			font-size: 2.3rem;
+			span {
+				color: $border;
+			}
+		}
+	}
+}
+.buttonGame {
+	width: 60%;
+	padding: 10px;
+	@include flex(space-between);
+	button {
+		height: 3rem;
+	}
+	.buttonFailed {
+		background-color: $failedCol;
+		color: rgb(196, 179, 35);
+		&:hover {
+			background-color: $failedColHov;
+			color: $fcolHover;
+			@include transition;
+		}
+		&:active {
+			background-color: $failedColAct;
+			color: $fcolActive;
+			scale: 0.95;
+			@include transition(ease);
+			@include transition(scale);
+		}
+	}
+	.buttonSucces {
+		background-color: $succesCol;
+		color: rgb(196, 179, 35);
+		&:hover {
+			background-color: $succesColHov;
+			color: $fcolHover;
+			@include transition;
+		}
+		&:active {
+			background-color: $succesColAct;
+			color: $fcolActive;
+			scale: 0.95;
+			@include transition(ease);
+			@include transition(scale);
+		}
+	}
+}
+.score {
+	font-size: 2.5rem;
 }

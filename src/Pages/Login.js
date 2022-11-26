@@ -27,7 +27,12 @@ const Login = () => {
 				localStorage.setItem('connected', true);
 				nav('/');
 			} else {
-				event.target.classList.add('refused');
+				const errorMsg = document.querySelector('.errorConnection');
+				errorMsg.classList.add('show');
+				errorMsg.classList.add('refused');
+				setTimeout(() => {
+					errorMsg.classList.remove('refused');
+				}, 350);
 			}
 		});
 	};
@@ -35,12 +40,25 @@ const Login = () => {
 		<div>
 			<p className='textPageInfo'>Page de connexion</p>
 			<div className='containerConnexion'>
-				<form className='connexion' onSubmit={handleChange}>
+				<form
+					className='connexion'
+					onSubmit={handleChange}>
 					<label htmlFor='mail'>Nom d'utilisateur</label>
-					<input type='text' ref={userRef} id='mail' />
+					<input
+						type='text'
+						ref={userRef}
+						id='mail'
+					/>
 					<label htmlFor='password'>Password</label>
-					<input type='password' ref={passRef} id='password' />
+					<input
+						type='password'
+						ref={passRef}
+						id='password'
+					/>
 					<button type='submit'>Connexion</button>
+					<span className='errorConnection'>
+						Nom d'utilisateur ou mot de passe incorrect!
+					</span>
 				</form>
 			</div>
 		</div>
