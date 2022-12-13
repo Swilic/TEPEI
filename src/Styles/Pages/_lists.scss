@@ -1,0 +1,46 @@
+.create {
+	top: 10vh;
+	left: 10vw;
+	border: solid 2px $border;
+	border-radius: $radius;
+	background-color: rgb(201, 201, 201);
+	text-decoration: none;
+	padding: $pad;
+	margin: $pad - 2;
+	margin-left: 100px;
+	&:active {
+		scale: 1.05;
+		@include transition(scale);
+	}
+}
+.navLists {
+	@include flex;
+	padding: 30px 0;
+	.lists {
+		padding: 0;
+		width: 60vw;
+		@include flex($ali: unset);
+		flex-direction: column;
+		.wrapLists {
+			@include flex;
+		}
+		.list {
+			@include flex(space-between);
+			flex-grow: 1;
+			box-shadow: 0px 0px 5px $shadowCol, -0px -0px 5px $shadowCol,
+				0px -0px 5px $shadowCol, -0px 0px 5px $shadowCol;
+			@include backG;
+			margin: $pad - 2;
+			&:active {
+				scale: 1.05;
+				@include transition(scale);
+			}
+			button {
+				margin: $pad + 2;
+			}
+		}
+	}
+}
+.play {
+	background-color: $linkColActive;
+}

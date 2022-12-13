@@ -1,0 +1,15 @@
+.navigation {
+	@include flex;
+	padding: 25px 0;
+}
+
+.navElement {
+	padding: 0 $pad;
+	a {
+		text-decoration: none;
+	}
+	.active {
+		border-bottom: solid 2px;
+		border-color: $linkColActive;
+	}
+}

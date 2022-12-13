@@ -1,0 +1,50 @@
+.centerList {
+	padding-top: 5vh;
+	@include flex(space-between, flex-start);
+	flex-direction: row;
+	form.title {
+		padding-top: 15px;
+	}
+	.wrapForm {
+		padding: 2 * $pad;
+		margin-left: 15vw;
+		min-width: 20vw;
+		width: 25vw;
+		@include backG;
+	}
+	label {
+		padding-top: $pad;
+	}
+}
+.centerList li {
+	@include flex;
+	flex-direction: row-reverse;
+
+	span {
+		display: inline-block;
+		width: 90px;
+	}
+	button {
+		margin-right: $pad + 2;
+	}
+}
+.containerLists {
+	margin: 0 15vw;
+	@include flex;
+	flex-direction: column;
+	button {
+		margin: $pad;
+	}
+	li {
+		margin: 0 3vw;
+	}
+}
+.infoList {
+	font-size: 0.8rem;
+	font-style: italic;
+	text-align: right;
+	&.fail {
+		animation: wizz 0.3s;
+		color: red;
+	}
+}

@@ -1,0 +1,18 @@
+.home {
+	@include flex(space-evenly);
+	padding: 0;
+	.helloName {
+		margin: 0;
+		font-size: $ftitle;
+		font-weight: 600;
+		padding: 20px 0;
+	}
+}
+.profile {
+	@include flex;
+	padding: 0;
+}
+.connectionMessage {
+	padding-top: 15vh;
+	text-align: center;
+}

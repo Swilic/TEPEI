@@ -1,0 +1,15 @@
+.wrapCenterList {
+	@include flex;
+	.centerList {
+		padding: 50px 0;
+		width: 50vw;
+		@include flex($ali: flex-start);
+		flex-direction: column;
+		li {
+			padding-left: 150px;
+		}
+	}
+}
+.dict {
+	color: $shadowCol;
+}

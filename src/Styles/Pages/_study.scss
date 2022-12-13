@@ -1,0 +1,25 @@
+.wrapStudy {
+	margin-top: 20vh;
+	@include flex;
+	.study {
+		@include flex;
+		@include backG;
+		flex-direction: column;
+		width: 60vw;
+	}
+	.wrapQuestions {
+		width: 100%;
+		border-radius: $radius $radius 0 0;
+		background-color: rgb(213, 223, 224);
+		h2 {
+			padding-left: 50px;
+			font-size: 2.3rem;
+			span {
+				color: $border;
+			}
+		}
+	}
+}
+.score {
+	font-size: 2.5rem;
+}

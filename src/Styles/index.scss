@@ -1,5 +1,13 @@
-@import "./utilities/variables";
-@import "./utilities/mixins";
-@import "./allhere";
+@import './utilities/variables';
+@import './utilities/mixins';
 
+@import './basics';
 
+@import './Components/navigation';
+
+@import './Pages/home';
+@import './Pages/loginSignin';
+@import './Pages/lists';
+@import './Pages/list';
+@import './Pages/creatingList';
+@import './Pages/study';
