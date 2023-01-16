@@ -1,7 +1,7 @@
 const fastify = require('fastify')({ logger: true });
 const cors = require('@fastify/cors');
 const dbconnector = require('./middleWare/mongo.js');
-const account = require('./routes/account.js');
+const routes = require('./routes/account.js');
 const lists = require('./routes/lists.js');
 
 fastify.register(cors, {
@@ -10,7 +10,7 @@ fastify.register(cors, {
 });
 fastify.register(dbconnector);
 
-fastify.register(account, { prefix: '/account' });
+fastify.register(routes, { prefix: '/account' });
 fastify.register(lists, { prefix: '/user' });
 
 // Run the server!
