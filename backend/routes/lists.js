@@ -6,7 +6,7 @@ const lists = async function (fastify) {
 	const Lists = await fastify.mongo.db.collection('lists');
 	await fastify.get('/lists', async (request, reply) => {
 		const lists = await Lists.find({ owner: request.user }).toArray();
-
+		
 		const listFiltered = lists.map((element) => {
 			const { questions, title } = element;
 			return {
@@ -16,16 +16,16 @@ const lists = async function (fastify) {
 		});
 		reply.send(listFiltered);
 	});
-	await fastify.post('/list', async (request, reply) => {
-		await Lists.insertOne({
+	await fastify.post('/list', (request, reply) => {
+		Lists.insertOne({
 			owner: request.user,
 			title: request.body.title,
 			questions: request.body.questions,
 		});
 		reply.send('Should be done kekW');
 	});
-	await fastify.delete('/list', async (request, reply) => {
-		await Lists.deleteOne({
+	await fastify.delete('/list', (request, reply) => {
+		Lists.deleteOne({
 			title: request.body.title,
 		});
 		reply.send('What does the fox says');
