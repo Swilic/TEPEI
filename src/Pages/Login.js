@@ -11,7 +11,7 @@ const Login = () => {
 		event.preventDefault();
 		const user = userRef.current.value;
 		const pass = passRef.current.value;
-		axios('http://localhost:2999/account/login', {
+		axios('https://denisteamteam.netlify.app/account/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
