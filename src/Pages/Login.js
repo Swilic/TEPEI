@@ -14,7 +14,7 @@ const Login = () => {
 		axios('http://localhost:2999/account/login', {
 			method: 'POST',
 			headers: {
-				'access-control-allow-orgigin': '*',
+				'Access-control-allow-orgigin': '*',
 				'Content-Type': 'application/json',
 			},
 			data: {
