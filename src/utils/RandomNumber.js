@@ -1,3 +1,4 @@
+// Fonction qui retourne un nombre aléatoire qui n'est pas égale à index
 const randRep = (index, length) => {
     let first = undefined;
     let second = undefined;
@@ -8,6 +9,8 @@ const randRep = (index, length) => {
 
 	return [first, second];
 };
+
+// Fonction qui mélange
 const shuffle = function(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));

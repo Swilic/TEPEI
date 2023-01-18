@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Logout from './Logout';
 
 const ListsFetching = () => {
+	// Appel à l'API pour récupérer les listes de l'utilisateur
 	const [lists, setLists] = useState([]);
 	const nav = useNavigate();
 	useEffect(() => {
