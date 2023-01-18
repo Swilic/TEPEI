@@ -1,9 +1,13 @@
+// Importation des modules
 const { ObjectId } = require('@fastify/mongodb');
 const fastifyPlugin = require('fastify-plugin');
 const jwt = require('jsonwebtoken');
 
+// Déclaration fonction
 const auth = function (fastify, option, done) {
+	// Ajout d'une propriété à la requête
 	fastify.decorateRequest('user', '');
+	// Vérification du token d'authentification et ajout de l'id de l'utilisateur à la requête
 	fastify.addHook('preHandler', (request, reply, done) => {
 		const { authorization } = request.headers;
 		jwt.verify(
