@@ -25,6 +25,14 @@ const lists = async function (fastify) {
 		reply.send(listFiltered);
 	});
 
+	// Route pour prendre les questions d'une liste
+	await fastify.post('/titleList', async (request, reply) => {
+		// Trouve la liste en question
+		const list = await Lists.findOne({ title: request.body.title });
+		// Retourne la liste en JSON
+		reply.send(list.questions);
+	});
+
 	// Route création de liste
 	await fastify.post('/list', (request, reply) => {
 		Lists.insertOne({
