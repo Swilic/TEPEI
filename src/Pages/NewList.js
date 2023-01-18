@@ -4,14 +4,16 @@ import List from '../Components/List.js';
 import Navigation from '../Components/Navigation.js';
 
 const NewList = () => {
+	// Initialisation des refs
 	const questionRef = useRef(null);
 	const responseRef = useRef(null);
 	const titleRef = useRef(null);
+	// Variables d'état
 	const [card, setCard] = useState();
 
 	const handleCard = (e) => {
 		e.preventDefault();
-		// Add as object the question as key and response as value in the card
+		// Ajoute dans mon objet card les valeurs des inputs
 		setCard((prev) => ({
 			...prev,
 			...{ [questionRef.current.value]: responseRef.current.value },
@@ -20,6 +22,8 @@ const NewList = () => {
 	};
 
 	const sendList = () => {
+
+		// Vérifie les conditions d'acceptation, si pas bon, affiche un message d'erreur
 		if (
 			card === undefined ||
 			Object.entries(card).length < 3 ||
@@ -92,6 +96,7 @@ const NewList = () => {
 					</p>
 				</div>
 				<div className='containerLists'>
+					{/* Condition ternaire pour afficher le titre de la liste */}
 					<h2>{titleRef.current ? titleRef.current.value : ''}</h2>
 					{card ? <List card={Object.entries(card)} /> : ''}
 					<button

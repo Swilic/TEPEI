@@ -3,12 +3,14 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Sign = () => {
-	const nav = useNavigate();
+	// Initialisation des refs
 	const userRef = useRef(null);
 	const passRef = useRef(null);
+	const nav = useNavigate();
 
 	const handleChange = (event) => {
 		event.preventDefault();
+		// Récupération des valeurs des inputs
 		const user = userRef.current.value;
 		const pass = passRef.current.value;
 
@@ -20,6 +22,7 @@ const Sign = () => {
 				pass: pass,
 			},
 		}).then((res) => {
+			// Condition ternaire pour rediriger vers la page de connexion si la création de compte est acceptée
 			res.data === 'Clear' ? nav('/login') : console.log('no');
 		});
 	};
