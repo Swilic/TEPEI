@@ -12,6 +12,9 @@ fastify.register(cors, {
 });
 fastify.register(dbconnector);
 
+fastify.get('/', (request, reply) => {
+	reply.send({ hello: 'world' });
+});
 // Routes
 fastify.register(account, { prefix: '/account' });
 fastify.register(lists, { prefix: '/user' });
