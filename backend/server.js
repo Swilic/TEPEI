@@ -11,7 +11,7 @@ fastify.register(cors, {
 	methods: ['GET', 'POST', 'DELETE', 'PATCH'],
 });
 fastify.register(dbconnector);
-
+console.log('hello');
 // Routes
 fastify.register(account, { prefix: '/account' });
 fastify.register(lists, { prefix: '/user' });
