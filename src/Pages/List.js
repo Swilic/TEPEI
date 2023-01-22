@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
