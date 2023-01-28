@@ -1,7 +1,6 @@
 // Importation des modules, routes et middlewares
 const fastify = require('fastify')({ logger: true });
 const cors = require('@fastify/cors');
-const fastifyMultipart = require('@fastify/multipart');
 const dbconnector = require('./middleWare/mongo.js');
 const account = require('./routes/account.js');
 const lists = require('./routes/lists.js');
