@@ -19,7 +19,7 @@ const Login = () => {
 		axios('https://nodeserver-73b4.onrender.com:443/account/login', {
 			method: 'POST',
 			headers: {
-				'Access-control-allow-orgigin': '*',
+				'Access-control-allow-origin': '*',
 				'Content-Type': 'application/json',
 			},
 			data: {
