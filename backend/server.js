@@ -13,6 +13,7 @@ fastify.register(cors, {
 	origin: '*',
 	methods: ['GET', 'POST', 'DELETE', 'PATCH'],
 });
+reply.header('Access-Control-Allow-Origin', '*');
 fastify.register(dbconnector);
 // Routes
 fastify.register(account, { prefix: '/account' });
