@@ -16,10 +16,10 @@ const Login = () => {
 		const pass = passRef.current.value;
 
 		// Requête pour se connecter
-		axios('https://nodeserver-73b4.onrender.com:10000/account/login', {
+		axios('https://nodeserver-73b4.onrender.com/account/login', {
 			method: 'POST',
 			headers: {
-				'Access-Control-Allow-Origin ': '*',
+				'Access-Control-Allow-Origin': '*',
 				'Content-Type': 'application/json',
 			},
 			data: {

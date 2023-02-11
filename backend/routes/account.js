@@ -24,6 +24,7 @@ const routes = async function (fastify) {
 		// Erronée
 		if (!match) return reply.send('Mot de passe ou utilisateur incorrect');
 
+		reply.raw.setHeader('Access-Control-Allow-Origin', '*');
 		// Réponse réussite
 		reply.send({
 			status: 'Clear',

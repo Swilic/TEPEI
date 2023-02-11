@@ -10,7 +10,7 @@ fastify.get('/', (req, reply) => {
 });
 // Middlewares
 fastify.register(cors, {
-	origin: false,
+	origin: '*',
 	methods: ['GET', 'POST', 'DELETE', 'PATCH'],
 });
 fastify.register(dbconnector);
