@@ -16,10 +16,10 @@ const Login = () => {
 		const pass = passRef.current.value;
 
 		// Requête pour se connecter
-		axios('http://localhost:2999/account/login', {
+		axios('https://somehting.onrender.com/account/login', {
 			method: 'POST',
 			headers: {
-				'Access-control-allow-orgigin': '*',
+				'Access-Control-Allow-Origin': '*',
 				'Content-Type': 'application/json',
 			},
 			data: {
@@ -27,7 +27,7 @@ const Login = () => {
 				pass: pass,
 			},
 
-		// Si la connexion est acceptée, on stocke les données dans le localStorage et on redirige vers la page d'accueil
+			// Si la connexion est acceptée, on stocke les données dans le localStorage et on redirige vers la page d'accueil
 		}).then((res) => {
 			if (res.data.status === 'Clear') {
 				localStorage.setItem('token', res.data.token);
