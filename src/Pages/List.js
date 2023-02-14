@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Navigation from '../Components/Navigation';
 
 const List = () => {
@@ -9,10 +9,11 @@ const List = () => {
 	const position = useLocation();
 	const [questions, setQuestions] = useState([]);
 	const [length, setLength] = useState(0);
+	const { title } = useParams();
 
 	// Api pour prendre les questions de la liste qui se lancera au chargement de la page et à chaque fois que length change
 	useEffect(() => {
-		axios('http://localhost:2999/user/titleList', {
+		axios('http://localhost:10000/user/titleList', {
 			method: 'POST',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -27,7 +28,7 @@ const List = () => {
 
 	// Api pour supprimer une question
 	const deleteElement = (index) => {
-		axios('http://somehting.onrender.com/user/list', {
+		axios('http://localhost:10000/user/list', {
 			method: 'PATCH',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('token')}`,

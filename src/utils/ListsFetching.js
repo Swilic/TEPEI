@@ -8,7 +8,7 @@ const ListsFetching = () => {
 	const [lists, setLists] = useState([]);
 	const nav = useNavigate();
 	useEffect(() => {
-		axios('http://somehting.onrender.com/user/lists', {
+		axios('http://localhost:10000/user/lists', {
 			method: 'get',
 			headers: {
 				'Content-Type': 'application/json',

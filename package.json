@@ -20,7 +20,7 @@
     "sass": "^1.55.0"
   },
   "scripts": {
-    "server": "npm run ./backend/server.js",
+    "server": "node ./backend/server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

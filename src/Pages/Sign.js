@@ -14,7 +14,7 @@ const Sign = () => {
 		const user = userRef.current.value;
 		const pass = passRef.current.value;
 
-		axios('http://somehting.onrender.com/account/sign', {
+		axios('http://localhost:10000/account/sign', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			data: {
