@@ -35,7 +35,7 @@ const NewList = () => {
 				infoList.classList.toggle('fail');
 			}, 300);
 		} else {
-			axios('http://localhost:2999/user/list', {
+			axios('http://somehting.onrender.com/user/list', {
 				method: 'POST',
 				headers: {
 					authorization: `Bearer ${localStorage.getItem('token')}`,
