@@ -16,7 +16,7 @@ const Lists = () => {
 	};
 
 	const deleteList = (title) => {
-		axios('http://somehting.onrender.com/user/list', {
+		axios('https://somehting.onrender.com/user/list', {
 			method: 'DELETE',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('token')}`,

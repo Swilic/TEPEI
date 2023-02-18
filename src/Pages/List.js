@@ -10,7 +10,7 @@ const List = () => {
 
 	// Api pour supprimer une question
 	const deleteElement = (index) => {
-		axios('http://somehting.onrender.com/user/list', {
+		axios('https://somehting.onrender.com/user/list', {
 			method: 'PATCH',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('token')}`,
