@@ -1,9 +1,11 @@
 import React from 'react';
 
+// Component de la liste des cartes
 const List = (props) => {
 	
 	return (
 		<ul>
+			{/* On map sur le tableau de cartes pour afficher les questions et les réponses */}
 			{props.card.map((element, index) => {
 				return (
 					<li key={index} className='creationList'>

@@ -3,24 +3,36 @@ import StudyDone from '../utils/StudyDone';
 const { randRep, shuffle } = require('../utils/RandomNumber.js');
 
 const StudyCard = (props) => {
+	// Variables comportant les questions
 	const questions = props.questions;
 	const length = questions.length;
+	// Variables d'état
+	// index du choix
 	const [choice, setChoice] = useState();
+	// Compte de bonne réponse
 	const [success, setSuccess] = useState(0);
+	// L'index de la question
 	const [index, setIndex] = useState(0);
+	// Dernière question
 	const [last, setLast] = useState(false);
+	// Fausses questions du QCM
 	const [falseQuest, setFalseQuest] = useState(randRep(index, length));
+	// Toutes les questions du QCM
 	const [allQuest, setAllQuest] = useState(shuffle([...falseQuest, index]));
 
+	// Gestion des changements d'état, pour les fausses questions
 	useEffect(() => {
 		setFalseQuest(randRep(index, length));
 		setChoice(-1)
 	}, [index]);
 
+	// Gestion des changements d'état, mélange de toutes les questions
 	useEffect(() => {
 		setAllQuest(shuffle([...falseQuest, index]));
 	}, [falseQuest]);
 
+
+	// Vérifie si le choix est bon
 	const validate = () => {
 		if (!last && choice === index) {
 			setSuccess((c) => c + 1);
@@ -31,17 +43,23 @@ const StudyCard = (props) => {
 			setLast(true);
 		}
 	};
+
+	// Si fini on affiche le composant StudyDone
 	if (last) {
 		return <StudyDone success={success} length={length} />;
 	} else {
+		// Sinon on génère la question suivante
 		return (
 			<>
+			{/* Montre la question  */}
 				<div className='wrapQuestions'>
 					<h2>
 						<span>Question: </span>
 						{questions[index][0]}
 					</h2>
 				</div>
+
+				{/* Montre les réponses */}
 				<div className='wrapResponse'>
 					<form onSubmit={(e) => e.preventDefault()}>
 						<input

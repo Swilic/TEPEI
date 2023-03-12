@@ -3,6 +3,7 @@ import logOut from '../utils/Logout.js';
 
 const Profil = () => {
 	return (
+		// Bouton de déconnexion
 		<div className='profile'>
 			<button
 				onClick={() => {

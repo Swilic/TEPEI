@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "projet de fin d'année f*ck",
+=======
+  "name": "projet",
+>>>>>>> 83fa21771cffc40c0e826fc3b1f49a677f0d71ab
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,7 +31,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "server": "nodemon ./backend/server.js",
+    "server": "npm run ./backend/server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

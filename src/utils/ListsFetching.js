@@ -4,10 +4,11 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Logout from './Logout';
 
 const ListsFetching = () => {
+	// Appel à l'API pour récupérer les listes de l'utilisateur
 	const [lists, setLists] = useState([]);
 	const nav = useNavigate();
 	useEffect(() => {
-		axios('http://localhost:2999/user/lists', {
+		axios('https://somehting.onrender.com/user/lists', {
 			method: 'get',
 			headers: {
 				'Content-Type': 'application/json',

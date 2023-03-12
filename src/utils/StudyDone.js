@@ -1,6 +1,7 @@
 import React from 'react';
 
 const StudyDone = (props) => {
+	// Afficher le score de fin de partie
 	return (
 		<div>
 			<p className='score'>

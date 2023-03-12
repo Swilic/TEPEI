@@ -4,11 +4,13 @@ import { useLocation } from 'react-router-dom';
 import Navigation from '../Components/Navigation';
 
 const List = () => {
+	// Récupérer les données de la page précédente
 	const position = useLocation();
 	const questions = Object.entries(position.state.questions);
 
+	// Api pour supprimer une question
 	const deleteElement = (index) => {
-		axios('http://localhost:2999/user/list', {
+		axios('https://somehting.onrender.com/user/list', {
 			method: 'PATCH',
 			headers: {
 				authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -18,6 +20,7 @@ const List = () => {
 				index: index,
 			},
 		}).then(() => {
+			// Cache la question supprimée
 			const list = document.querySelector(`.creationList${index}`);
 			list.style.display = 'none';
 		});
@@ -27,6 +30,7 @@ const List = () => {
 			<Navigation />
 			<div className='wrapCenterList'>
 				<ul className='centerList '>
+					{/* Boucle et retourne les questions */}
 					{questions.map((element, index) => {
 						return (
 							<li key={index} className={`creationList${index}`}>
