@@ -5,9 +5,11 @@ const dbconnector = require('./middleWare/mongo.js');
 const account = require('./routes/account.js');
 const lists = require('./routes/lists.js');
 
+// Tester route par défaut
 fastify.get('/', (req, reply) => {
 	reply.send({ hello: 'world' });
 });
+
 // Middlewares
 fastify.register(cors, {
 	origin: '*',
