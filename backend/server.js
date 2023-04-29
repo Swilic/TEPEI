@@ -22,7 +22,7 @@ fastify.register(account, { prefix: '/account' });
 fastify.register(lists, { prefix: '/user' });
 
 // Run the server!
-fastify.listen((err) => {
+fastify.listen({ port: 0, host: '0.0.0.0' }, (err) => {
 	if (err) {
 		fastify.log.error(err);
 		process.exit(1);
