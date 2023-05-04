@@ -7,7 +7,7 @@ const lists = require('./routes/lists.js');
 
 // Tester route par défaut
 fastify.get('/', (req, reply) => {
-	reply.send({ hello: 'world' });
+	reply.send("Salut moi c'est Jean Eude");
 });
 
 // Middlewares
@@ -22,7 +22,7 @@ fastify.register(account, { prefix: '/account' });
 fastify.register(lists, { prefix: '/user' });
 
 // Run the server!
-fastify.listen({port : 10000}, (err) => {
+fastify.listen({ port: 10000 }, (err) => {
 	if (err) {
 		fastify.log.error(err);
 		process.exit(1);
