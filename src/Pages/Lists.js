@@ -27,8 +27,8 @@ const Lists = () => {
 			if (res.data === 'Unvalid token!') {
 				Logout();
 				nav('/');
-			}
-			location.reload();
+			} 
+			location.reload(); 
 		});
 	};
 	return (
