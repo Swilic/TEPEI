@@ -28,7 +28,7 @@ const Lists = () => {
 				Logout();
 				nav('/');
 			}
-			location.reload();
+			
 		});
 	};
 	return (
