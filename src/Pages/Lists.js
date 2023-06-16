@@ -28,14 +28,16 @@ const Lists = () => {
 				Logout();
 				nav('/');
 			} 
-			location.reload(); 
+			location.reload();
 		});
 	};
 	return (
 		<div>
 			<Navigation />
 			{/* Bouton qui redirige vers la page de création de liste */}
-			<Link to='/creation' className='create'>
+			<Link
+				to='/creation'
+				className='create'>
 				Nouvelle liste
 			</Link>
 			<nav className='navLists'>
@@ -43,10 +45,14 @@ const Lists = () => {
 					{/* Boucle pour afficher les listes */}
 					{lists.map((element) => {
 						return (
-							<div className='wrapLists' key={element.title}>
+							<div
+								className='wrapLists'
+								key={element.title}>
 								<li className='list'>
 									{/* Bouton qui redirige vers la page de la liste */}
-									<NavLink to='list' state={element}>
+									<NavLink
+										to='list'
+										state={element}>
 										<h2>{element.title}</h2>
 									</NavLink>
 									{/* Bouton qui supprime la liste */}
