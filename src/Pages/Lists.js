@@ -1,14 +1,29 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate, Link } from 'react-router-dom';
 import Navigation from '../Components/Navigation.js';
-import ListsFetching from '../utils/ListsFetching.js';
 
 const Lists = () => {
-	// api qui récupère les listes de l'utilisateur
-	const lists = ListsFetching();
-	// hook pour naviguer entre les pages
+	// Appel à l'API pour récupérer les listes de l'utilisateur
+	const [lists, setLists] = useState([]);
+	// Initaliste l'objet de navigation
 	const nav = useNavigate();
+
+	useEffect(() => {
+		axios('https://somehting.onrender.com/user/lists', {
+			method: 'get',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		}).then((res) => {
+			if (res.data === 'Unvalid token!') {
+				Logout();
+				nav('/');
+			}
+			setLists(res.data);
+		});
+	}, []);
 
 	// Fonction pour retourner à la page d'étude
 	const toStudy = (element) => {
@@ -58,6 +73,13 @@ const Lists = () => {
 									<button
 										onClick={() => {
 											deleteList(element.title);
+											setLists(
+												lists.filter(
+													(e) =>
+														e.title !==
+														element.title,
+												),
+											);
 										}}>
 										Supprimer
 									</button>
