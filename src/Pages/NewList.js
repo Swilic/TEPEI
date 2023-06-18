@@ -22,7 +22,6 @@ const NewList = () => {
 	};
 
 	const sendList = () => {
-
 		// Vérifie les conditions d'acceptation, si pas bon, affiche un message d'erreur
 		if (
 			card === undefined ||
@@ -44,6 +43,14 @@ const NewList = () => {
 					title: titleRef.current.value,
 					questions: card,
 				},
+			}).then(() => {
+				// Affiche un message de confirmation
+				const confirmationNewList =
+					document.querySelector('.hide.infoList');
+				confirmationNewList.classList.toggle('success');
+				setTimeout(() => {
+					confirmationNewList.classList.toggle('success');
+				}, 5000);
 			});
 		}
 	};
@@ -104,6 +111,8 @@ const NewList = () => {
 						className='create'>
 						Liste finie
 					</button>
+
+					<p className='hide infoList'>Normalement c'est bon!</p>
 				</div>
 			</div>
 		</Fragment>

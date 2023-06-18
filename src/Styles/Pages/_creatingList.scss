@@ -47,4 +47,12 @@
 		animation: wizz 0.3s;
 		color: red;
 	}
+	&.hide {
+		display: none;
+	}
+	&.success {
+		display: block;
+		animation: wizz 0.3s;
+		color: green;
+	}
 }
